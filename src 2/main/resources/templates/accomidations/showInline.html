@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+    <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_accomidation})}|">Show Accomidation - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-th-fragment="inline-content" data-layout-fragment="content" data-th-object="${accomidation}">
+        <div>
+
+          <!-- CONTENT -->
+            <div id="mainEntityFieldSet">
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="accomidation-accomidationtype-field" data-z="77adf506">
+            	      <strong data-th-text="#{label_accomidation_accomidationtype}">accomidationType</strong>
+                    <span data-th-text="*{{accomidationType}}">accomidationTypeValue</span>
+         	        </li>
+                  <li id="accomidation-price-field" data-z="d885f278">
+            	      <strong data-th-text="#{label_accomidation_price}">price</strong>
+                    <span data-th-text="*{{price}}">priceValue</span>
+         	        </li>
+                  <li id="accomidation-customerbooking-field" data-z="c225b8d8">
+            	      <strong data-th-text="#{label_accomidation_customerbooking}">customerBooking</strong>
+                    <span data-th-text="*{{customerBooking}}">customerBookingValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>
