@@ -1,21 +1,25 @@
 package com.mc.invoice.domain;
+import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Version;
+import javax.validation.constraints.Min;
+
+import org.springframework.format.annotation.NumberFormat;
 import org.springframework.roo.addon.javabean.annotations.RooEquals;
 import org.springframework.roo.addon.javabean.annotations.RooJavaBean;
 import org.springframework.roo.addon.javabean.annotations.RooToString;
 import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Version;
+
 import com.mc.invoice.enumtype.AccomidationType;
-import javax.persistence.Enumerated;
-import javax.validation.constraints.Min;
-import org.springframework.format.annotation.NumberFormat;
+
 import io.springlets.format.EntityFormat;
-import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
-import java.util.Objects;
-import javax.persistence.Entity;
 
 /**
  * = Accomidation
@@ -207,6 +211,6 @@ public class Accomidation {
      * @return String
      */
     public String toString() {
-        return "Accomidation {" + "id='" + id + '\'' + ", version='" + version + '\'' + ", price='" + price + '\'' + ", ITERABLE_TO_ADD_CANT_BE_NULL_MESSAGE='" + ITERABLE_TO_ADD_CANT_BE_NULL_MESSAGE + '\'' + ", ITERABLE_TO_REMOVE_CANT_BE_NULL_MESSAGE='" + ITERABLE_TO_REMOVE_CANT_BE_NULL_MESSAGE + '\'' + "}" + super.toString();
+		return accomidationType.name();
     }
 }

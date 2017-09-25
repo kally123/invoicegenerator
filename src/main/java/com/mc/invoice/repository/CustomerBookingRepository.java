@@ -1,6 +1,8 @@
 package com.mc.invoice.repository;
 import com.mc.invoice.domain.CustomerBooking;
 import org.springframework.roo.addon.layers.repository.jpa.annotations.RooJpaRepository;
+import io.springlets.data.jpa.repository.DetachableJpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * = CustomerBookingRepository
@@ -9,5 +11,6 @@ import org.springframework.roo.addon.layers.repository.jpa.annotations.RooJpaRep
  *
  */
 @RooJpaRepository(entity = CustomerBooking.class)
-public interface CustomerBookingRepository {
+@Transactional(readOnly = true)
+public interface CustomerBookingRepository extends DetachableJpaRepository<CustomerBooking, Long>, CustomerBookingRepositoryCustom {
 }
