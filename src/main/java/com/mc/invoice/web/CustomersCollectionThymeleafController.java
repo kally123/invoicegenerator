@@ -1,36 +1,11 @@
 package com.mc.invoice.web;
-import com.mc.invoice.domain.Customer;
-import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
-import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
-import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooThymeleaf;
-import ar.com.fdvs.dj.core.DynamicJasperHelper;
-import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
-import ar.com.fdvs.dj.domain.builders.ColumnBuilderException;
-import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
-import com.mc.invoice.service.api.CustomerService;
-import com.mc.invoice.web.reports.ExportingErrorException;
-import com.mc.invoice.web.reports.JasperReportsCsvExporter;
-import com.mc.invoice.web.reports.JasperReportsExporter;
-import com.mc.invoice.web.reports.JasperReportsPdfExporter;
-import com.mc.invoice.web.reports.JasperReportsXlsExporter;
-import io.springlets.data.domain.GlobalSearch;
-import io.springlets.data.web.datatables.ConvertedDatatablesData;
-import io.springlets.data.web.datatables.Datatables;
-import io.springlets.data.web.datatables.DatatablesColumns;
-import io.springlets.data.web.datatables.DatatablesPageable;
-import io.springlets.data.web.select2.Select2DataSupport;
-import io.springlets.data.web.select2.Select2DataWithConversion;
-import io.springlets.web.mvc.util.ControllerMethodLinkBuilderFactory;
-import io.springlets.web.mvc.util.MethodLinkBuilderFactory;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Locale;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -41,6 +16,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
+import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
+import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooThymeleaf;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -56,6 +34,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponents;
+
+import com.mc.invoice.domain.Customer;
+import com.mc.invoice.service.api.CustomerService;
+import com.mc.invoice.web.reports.ExportingErrorException;
+import com.mc.invoice.web.reports.JasperReportsCsvExporter;
+import com.mc.invoice.web.reports.JasperReportsExporter;
+import com.mc.invoice.web.reports.JasperReportsPdfExporter;
+import com.mc.invoice.web.reports.JasperReportsXlsExporter;
+
+import ar.com.fdvs.dj.core.DynamicJasperHelper;
+import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
+import ar.com.fdvs.dj.domain.builders.ColumnBuilderException;
+import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
+import io.springlets.data.domain.GlobalSearch;
+import io.springlets.data.web.datatables.ConvertedDatatablesData;
+import io.springlets.data.web.datatables.Datatables;
+import io.springlets.data.web.datatables.DatatablesColumns;
+import io.springlets.data.web.datatables.DatatablesPageable;
+import io.springlets.data.web.select2.Select2DataSupport;
+import io.springlets.data.web.select2.Select2DataWithConversion;
+import io.springlets.web.mvc.util.ControllerMethodLinkBuilderFactory;
+import io.springlets.web.mvc.util.MethodLinkBuilderFactory;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 /**
  * = CustomersCollectionThymeleafController
@@ -189,7 +193,7 @@ public class CustomersCollectionThymeleafController {
      */
     @GetMapping(name = "list")
     public ModelAndView list(Model model) {
-        return new ModelAndView("/customers/list");
+		return new ModelAndView("customers/list");
     }
 
     /**
