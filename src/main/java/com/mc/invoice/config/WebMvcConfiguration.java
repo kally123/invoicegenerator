@@ -1,9 +1,6 @@
 package com.mc.invoice.config;
-import org.springframework.roo.addon.web.mvc.controller.annotations.config.RooWebMvcConfiguration;
-import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooWebMvcThymeleafUIConfiguration;
-import io.tracee.binding.springmvc.TraceeInterceptor;
-import java.lang.Override;
 import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties;
 import org.springframework.context.ApplicationContext;
@@ -11,6 +8,8 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.roo.addon.web.mvc.controller.annotations.config.RooWebMvcConfiguration;
+import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooWebMvcThymeleafUIConfiguration;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -21,6 +20,8 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+
+import io.tracee.binding.springmvc.TraceeInterceptor;
 
 /**
  * = WebMvcConfiguration
@@ -105,6 +106,10 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter implements Appl
      * @return ThymeleafProperties
      */
     public ThymeleafProperties getThymeleafProperties() {
+		System.out.println("#######################################################################");
+		System.out.println("Kalyan : " + thymeleafProperties.getPrefix() + "/" + thymeleafProperties.getViewNames()
+				+ "/" + thymeleafProperties.getSuffix());
+		System.out.println("#######################################################################");
         return thymeleafProperties;
     }
 
@@ -160,7 +165,7 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter implements Appl
     public SpringResourceTemplateResolver javascriptTemplateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
         resolver.setApplicationContext(getApplicationContext());
-        resolver.setPrefix("classpath:/templates/fragments/js/");
+		resolver.setPrefix("classpath:templates/fragments/js/");
         resolver.setTemplateMode(TemplateMode.JAVASCRIPT);
         resolver.setCharacterEncoding("UTF-8");
         resolver.setCheckExistence(true);

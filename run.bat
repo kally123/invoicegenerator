@@ -1,0 +1,1 @@
+java -jar /Users/kalyansomisetty/Desktop/InvoiceGeneraor/target/invoicegeneraor-1.0-exec.jar

@@ -1,21 +1,24 @@
 package com.mc.invoice.domain;
-import org.springframework.roo.addon.javabean.annotations.RooEquals;
-import org.springframework.roo.addon.javabean.annotations.RooJavaBean;
-import org.springframework.roo.addon.javabean.annotations.RooToString;
-import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
+import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Version;
-import io.springlets.format.EntityFormat;
-import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
-import org.springframework.roo.addon.jpa.annotations.entity.JpaRelationType;
-import org.springframework.roo.addon.jpa.annotations.entity.RooJpaRelation;
+import javax.persistence.Version;
 import javax.validation.constraints.Min;
+
 import org.springframework.format.annotation.NumberFormat;
-import java.util.Objects;
-import javax.persistence.Entity;
+import org.springframework.roo.addon.javabean.annotations.RooEquals;
+import org.springframework.roo.addon.javabean.annotations.RooJavaBean;
+import org.springframework.roo.addon.javabean.annotations.RooToString;
+import org.springframework.roo.addon.jpa.annotations.entity.JpaRelationType;
+import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
+import org.springframework.roo.addon.jpa.annotations.entity.RooJpaRelation;
+
+import io.springlets.format.EntityFormat;
 
 /**
  * = CustomerBooking
@@ -261,7 +264,8 @@ public class CustomerBooking {
      * @return String
      */
     public String toString() {
-        return "CustomerBooking {" + "id='" + id + '\'' + ", version='" + version + '\'' + ", noOfDays='" + noOfDays + '\'' + ", totalPrice='" + totalPrice + '\'' + ", customerDiscount='" + customerDiscount + '\'' + ", ITERABLE_TO_ADD_CANT_BE_NULL_MESSAGE='" + ITERABLE_TO_ADD_CANT_BE_NULL_MESSAGE + '\'' + ", ITERABLE_TO_REMOVE_CANT_BE_NULL_MESSAGE='" + ITERABLE_TO_REMOVE_CANT_BE_NULL_MESSAGE + '\'' + "}" + super.toString();
+		return "CustomerBooking {" + "id='" + id + '\'' + ", noOfDays='" + noOfDays + '\'' + ", totalPrice="
+				+ totalPrice + " }";
     }
 
     /**
