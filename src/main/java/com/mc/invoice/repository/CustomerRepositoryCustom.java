@@ -1,4 +1,5 @@
 package com.mc.invoice.repository;
+
 import com.mc.invoice.domain.Customer;
 import org.springframework.roo.addon.layers.repository.jpa.annotations.RooJpaRepositoryCustom;
 import com.mc.invoice.domain.CustomerBooking;
@@ -15,22 +16,23 @@ import org.springframework.data.domain.Pageable;
 @RooJpaRepositoryCustom(entity = Customer.class)
 public interface CustomerRepositoryCustom {
 
-    /**
-     * TODO Auto-generated method documentation
-     *
-     * @param customerBooking
-     * @param globalSearch
-     * @param pageable
-     * @return Page
-     */
-    public abstract Page<Customer> findByCustomerBooking(CustomerBooking customerBooking, GlobalSearch globalSearch, Pageable pageable);
+	/**
+	 * TODO Auto-generated method documentation
+	 *
+	 * @param customerBooking
+	 * @param globalSearch
+	 * @param pageable
+	 * @return Page
+	 */
+	public abstract Page<Customer> findByCustomerBooking(CustomerBooking customerBooking, GlobalSearch globalSearch,
+			Pageable pageable);
 
-    /**
-     * TODO Auto-generated method documentation
-     *
-     * @param globalSearch
-     * @param pageable
-     * @return Page
-     */
-    public abstract Page<Customer> findAll(GlobalSearch globalSearch, Pageable pageable);
+	/**
+	 * TODO Auto-generated method documentation
+	 *
+	 * @param globalSearch
+	 * @param pageable
+	 * @return Page
+	 */
+	public abstract Page<Customer> findAll(GlobalSearch globalSearch, Pageable pageable);
 }

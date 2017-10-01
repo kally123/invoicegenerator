@@ -14,15 +14,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class InvoiceGeneraorApplication {
 
-    /**
-     * TODO Auto-generated method documentation
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        SpringApplication.run(InvoiceGeneraorApplication.class, args);
+	/**
+	 * TODO Auto-generated method documentation
+	 *
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(InvoiceGeneraorApplication.class, args);
 		openAppUrl("8085");
-    }
+	}
 
 	public static void openAppUrl(String port) {
 		String url = "http://localhost:" + port;

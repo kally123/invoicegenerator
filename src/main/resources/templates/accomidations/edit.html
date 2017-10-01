@@ -1,165 +1,241 @@
 <!DOCTYPE html>
 <html lang="en" data-layout-decorate="~{layouts/default-layout}">
-  <head id="head">
+<head id="head">
 
-    <title data-th-text="#{label_edit_entity(#{label_accomidation})}">
-    Edit Accomidation - Invoice Generator application</title>
+<title data-th-text="#{label_edit_entity(#{label_accomidation})}">
+	Edit Accomidation - Invoice Generator application</title>
 
-    <!-- DateTimePicker -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css" data-th-href="@{/webjars/datetimepicker/2.5.4/build/jquery.datetimepicker.min.css}" />
+<!-- DateTimePicker -->
+<link rel="stylesheet" type="text/css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css"
+	data-th-href="@{/webjars/datetimepicker/2.5.4/build/jquery.datetimepicker.min.css}" />
 
-  </head>
-  
+</head>
 
-  <body id="body">
 
-    <header role="banner">
-      <!-- Content replaced by layout of the page displayed -->
-    </header>
+<body id="body">
 
-    <!-- CONTAINER -->
-    <div class="container bg-container">
-      <!-- CONTENT -->
-      <!--
+	<header role="banner">
+		<!-- Content replaced by layout of the page displayed -->
+	</header>
+
+	<!-- CONTAINER -->
+	<div class="container bg-container">
+		<!-- CONTENT -->
+		<!--
         Only the inner content of the following tag "section" is included
         within the template, in the section "content"
       -->
-      <section data-layout-fragment="content">
+		<section data-layout-fragment="content">
 
-        <div class="container-fluid content" data-th-with="collectionLink=${@linkBuilder.of('AccomidationsCollectionThymeleafController')},itemLink=${@linkBuilder.of('AccomidationsItemThymeleafController')}">
+			<div class="container-fluid content"
+				data-th-with="collectionLink=${@linkBuilder.of('AccomidationsCollectionThymeleafController')},itemLink=${@linkBuilder.of('AccomidationsItemThymeleafController')}">
 
-          <h1 data-th-text="#{label_edit_entity(#{label_accomidation})}">Edit Accomidation</h1>
+				<h1 data-th-text="#{label_edit_entity(#{label_accomidation})}">Edit
+					Accomidation</h1>
 
-          <!-- FORM -->
-          <form class="form-horizontal validate" method="POST" data-th-object="${accomidation}" data-th-action="@{${itemLink.to('update').with('accomidation', accomidation.id)}}">
-            <input type="hidden" name="_method" value="PUT" />
-            <input type="hidden" name="version" data-th-value="*{version}" />
+				<!-- FORM -->
+				<form class="form-horizontal validate" method="POST"
+					data-th-object="${accomidation}"
+					data-th-action="@{${itemLink.to('update').with('accomidation', accomidation.id)}}">
+					<input type="hidden" name="_method" value="PUT" /> <input
+						type="hidden" name="version" data-th-value="*{version}" />
 
-            <!-- CONCURRENCY CONTROL -->
-            <div class="alert alert-warning" data-th-if="${concurrency}">
-              <h2 data-th-text="#{label_concurrency_title}">Warning! This record has been updated by an other user.</h2>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="concurrency" value="apply"> <span data-th-text="#{label_concurrency_apply}">Apply my changes anyway</span> <i><span data-th-text="#{label_concurrency_apply_info}">(discard all the changes applied by the other users).</span></i>
-                </input></label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="concurrency" value="discard" checked=""> <span data-th-text="#{label_concurrency_discard}">Discard all my changes and reload this record.</span>
-                </input></label>
-              </div>
-              <br>
-              <button type="submit" class="btn btn-primary">Accept</button>
-            </br></div>
-            <!-- /CONCURRENCY CONTROL -->
+					<!-- CONCURRENCY CONTROL -->
+					<div class="alert alert-warning" data-th-if="${concurrency}">
+						<h2 data-th-text="#{label_concurrency_title}">Warning! This
+							record has been updated by an other user.</h2>
+						<div class="radio">
+							<label> <input type="radio" name="concurrency"
+								value="apply"> <span
+								data-th-text="#{label_concurrency_apply}">Apply my
+									changes anyway</span> <i><span
+									data-th-text="#{label_concurrency_apply_info}">(discard
+										all the changes applied by the other users).</span></i> </input></label>
+						</div>
+						<div class="radio">
+							<label> <input type="radio" name="concurrency"
+								value="discard" checked=""> <span
+								data-th-text="#{label_concurrency_discard}">Discard all
+									my changes and reload this record.</span> </input></label>
+						</div>
+						<br>
+						<button type="submit" class="btn btn-primary">Accept</button>
+						</br>
+					</div>
+					<!-- /CONCURRENCY CONTROL -->
 
-             <fieldset id="containerFields">
-              <legend class="sr-only" data-th-text="#{label_data_entity(#{label_accomidation})}">Accomidation data </legend>
+					<fieldset id="containerFields">
+						<legend class="sr-only"
+							data-th-text="#{label_data_entity(#{label_accomidation})}">Accomidation
+							data </legend>
 
-<div class="form-group has-error has-feedback" data-z="77adf506" id="accomidation-accomidationtype-field" data-th-classappend="${#fields.hasErrors('accomidationType')}? 'has-error has-feedback'" data-th-class="form-group">
-    <label for="accomidationType" class="col-md-3 control-label" data-th-text="#{label_accomidation_accomidationtype}">accomidationType</label>
-    <div class="col-md-6">
-      <!-- Select2 -->
-      <select data-th-field="*{accomidationType}" class="form-control dropdown-select-simple" data-allow-clear="true" data-th-attr="data-placeholder=#{info_select_an_option}">
-         <option data-th-each="item : ${accomidationType}" data-th-value="${item}" data-th-text="${{item}}">Value</option>
-      </select>
-      <span data-th-classappend="${#fields.hasErrors('accomidationType')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('accomidationType')}" aria-hidden="true"></span>
-      <span id="accomidationType-error" class="help-block" data-th-if="${#fields.hasErrors('accomidationType')}" data-th-errors="*{accomidationType}">Error message.</span>
-    </div>
-</div>
-<div class="form-group has-error has-feedback" data-z="d885f278" id="accomidation-price-field" data-th-classappend="${#fields.hasErrors('price')}? 'has-error has-feedback'" data-th-class="form-group">
-  <label for="price" class="col-md-3 control-label" data-th-text="#{label_accomidation_price}">price</label>
-  <div class="col-md-3">
-    <input id="price" name="price" data-th-value="*{{price}}" type="text" class="form-control inputmask" placeholder="price" data-th-placeholder="#{label_accomidation_price}" data-toggle="tooltip" aria-describedby="priceStatus" data-inputmask-alias="numeric" data-inputmask-digits="0" min="1" />
-      <span data-th-classappend="${#fields.hasErrors('price')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('price')}" aria-hidden="true"></span>
-      <span id="price-error" class="help-block" data-th-if="${#fields.hasErrors('price')}" data-th-errors="*{price}">Error message.</span>
-  </div>
-</div>
-<div class="form-group has-error has-feedback" data-z="c225b8d8" id="accomidation-customerbooking-field" data-th-classappend="${#fields.hasErrors('customerBooking')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('CustomerBookingsCollectionThymeleafController')}">
-    <label for="customerBooking" class="col-md-3 control-label" data-th-text="#{label_accomidation_customerbooking}">CustomerBooking</label>
-    <div class="col-md-6">
-      <!-- Select2 -->
-      <select data-th-field="*{customerBooking}" class="form-control dropdown-select-ajax" data-allow-clear="true" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}">
-          <option data-th-unless="*{customerBooking} == null" data-th-value="*{customerBooking.id}" data-th-text="*{{customerBooking}}" selected="selected">CustomerBooking</option>
-      </select>
-      <span data-th-classappend="${#fields.hasErrors('customerBooking')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('customerBooking')}" aria-hidden="true"></span>
-      <span id="customerBooking-error" class="help-block" data-th-if="${#fields.hasErrors('customerBooking')}" data-th-errors="*{customerBooking}">Error message.</span>
-    </div>
-</div>
-             </fieldset>
+						<div class="form-group has-error has-feedback" data-z="77adf506"
+							id="accomidation-accomidationtype-field"
+							data-th-classappend="${#fields.hasErrors('accomidationType')}? 'has-error has-feedback'"
+							data-th-class="form-group">
+							<label for="accomidationType" class="col-md-3 control-label"
+								data-th-text="#{label_accomidation_accomidationtype}">accomidationType</label>
+							<div class="col-md-6">
+								<!-- Select2 -->
+								<select data-th-field="*{accomidationType}"
+									class="form-control dropdown-select-simple"
+									data-allow-clear="true"
+									data-th-attr="data-placeholder=#{info_select_an_option}">
+									<option data-th-each="item : ${accomidationType}"
+										data-th-value="${item}" data-th-text="${{item}}">Value</option>
+								</select> <span
+									data-th-classappend="${#fields.hasErrors('accomidationType')}? 'glyphicon glyphicon-remove form-control-feedback'"
+									class="glyphicon glyphicon-remove form-control-feedback"
+									data-th-if="${#fields.hasErrors('accomidationType')}"
+									aria-hidden="true"></span> <span id="accomidationType-error"
+									class="help-block"
+									data-th-if="${#fields.hasErrors('accomidationType')}"
+									data-th-errors="*{accomidationType}">Error message.</span>
+							</div>
+						</div>
+						<div class="form-group has-error has-feedback" data-z="d885f278"
+							id="accomidation-price-field"
+							data-th-classappend="${#fields.hasErrors('price')}? 'has-error has-feedback'"
+							data-th-class="form-group">
+							<label for="price" class="col-md-3 control-label"
+								data-th-text="#{label_accomidation_price}">price</label>
+							<div class="col-md-3">
+								<input id="price" name="price" data-th-value="*{{price}}"
+									type="text" class="form-control inputmask" placeholder="price"
+									data-th-placeholder="#{label_accomidation_price}"
+									data-toggle="tooltip" aria-describedby="priceStatus"
+									data-inputmask-alias="numeric" data-inputmask-digits="0"
+									min="1" /> <span
+									data-th-classappend="${#fields.hasErrors('price')}? 'glyphicon glyphicon-remove form-control-feedback'"
+									class="glyphicon glyphicon-remove form-control-feedback"
+									data-th-if="${#fields.hasErrors('price')}" aria-hidden="true"></span>
+								<span id="price-error" class="help-block"
+									data-th-if="${#fields.hasErrors('price')}"
+									data-th-errors="*{price}">Error message.</span>
+							</div>
+						</div>
+						<div class="form-group has-error has-feedback" data-z="c225b8d8"
+							id="accomidation-customerbooking-field"
+							data-th-classappend="${#fields.hasErrors('customerBooking')}? 'has-error has-feedback'"
+							data-th-class="form-group"
+							data-th-with="collectionLink=${@linkBuilder.of('CustomerBookingsCollectionThymeleafController')}">
+							<label for="customerBooking" class="col-md-3 control-label"
+								data-th-text="#{label_accomidation_customerbooking}">CustomerBooking</label>
+							<div class="col-md-6">
+								<!-- Select2 -->
+								<select data-th-field="*{customerBooking}"
+									class="form-control dropdown-select-ajax"
+									data-allow-clear="true"
+									data-data-ajax--url="${collectionLink.to('select2')}"
+									data-ajax--cache="true" data-ajax--delay="250"
+									data-ajax--data-type="json"
+									data-data-placeholder="#{info_select_an_option}">
+									<option data-th-unless="*{customerBooking} == null"
+										data-th-value="*{customerBooking.id}"
+										data-th-text="*{{customerBooking}}" selected="selected">CustomerBooking</option>
+								</select> <span
+									data-th-classappend="${#fields.hasErrors('customerBooking')}? 'glyphicon glyphicon-remove form-control-feedback'"
+									class="glyphicon glyphicon-remove form-control-feedback"
+									data-th-if="${#fields.hasErrors('customerBooking')}"
+									aria-hidden="true"></span> <span id="customerBooking-error"
+									class="help-block"
+									data-th-if="${#fields.hasErrors('customerBooking')}"
+									data-th-errors="*{customerBooking}">Error message.</span>
+							</div>
+						</div>
+					</fieldset>
 
 
-              <!-- buttons form -->
-              <div class="form-group">
-                <div class="col-md-12">
-                  <div class="pull-left">
-                    <button type="reset" class="btn btn-default" onclick="location.href='list.html'" data-th-onclick="'location.href=\'' + @{${collectionLink.to('list')}} + '\''" data-th-text="#{label_reset}">Cancel</button>
-                  </div>
-                  <div class="pull-right">
-                    <button type="submit" class="btn btn-primary" data-th-text="#{label_save}">Save</button>
-                  </div>
-                </div>
-              </div>
+					<!-- buttons form -->
+					<div class="form-group">
+						<div class="col-md-12">
+							<div class="pull-left">
+								<button type="reset" class="btn btn-default"
+									onclick="location.href='list.html'"
+									data-th-onclick="'location.href=\'' + @{${collectionLink.to('list')}} + '\''"
+									data-th-text="#{label_reset}">Cancel</button>
+							</div>
+							<div class="pull-right">
+								<button type="submit" class="btn btn-primary"
+									data-th-text="#{label_save}">Save</button>
+							</div>
+						</div>
+					</div>
 
-          </form>
-          <!-- /FORM -->
+				</form>
+				<!-- /FORM -->
 
-        </div>
+			</div>
 
-      </section>
-      <!-- /CONTENT -->
-   </div>
-   <!-- /CONTAINER -->
+		</section>
+		<!-- /CONTENT -->
+	</div>
+	<!-- /CONTAINER -->
 
-   <footer class="container">
-    <!-- Content replaced by layout of the page displayed -->
-   </footer>
+	<footer class="container">
+		<!-- Content replaced by layout of the page displayed -->
+	</footer>
 
-  <!-- JavaScript
+	<!-- JavaScript
   ================================================== -->
-  <!-- Placed at the end of the document so that the pages load faster -->
-  <!-- JavaScript loaded by layout of the page displayed -->
-  <!--
+	<!-- Placed at the end of the document so that the pages load faster -->
+	<!-- JavaScript loaded by layout of the page displayed -->
+	<!--
        Only the inner content of the following tag "javascript" is included
        within the template, in the div "javascript"
       -->
-  <div data-layout-fragment="javascript">
+	<div data-layout-fragment="javascript">
 
-    <!-- DateTimePicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js" data-th-src="@{/webjars/datetimepicker/build/jquery.datetimepicker.full.min.js}"></script>
-    <script src="../../static/public/js/datetimepicker-defaults.js" data-th-src="@{/public/js/datetimepicker-defaults.js}"></script>
+		<!-- DateTimePicker -->
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js"
+			data-th-src="@{/webjars/datetimepicker/build/jquery.datetimepicker.full.min.js}"></script>
+		<script src="../../static/public/js/datetimepicker-defaults.js"
+			data-th-src="@{/public/js/datetimepicker-defaults.js}"></script>
 
-    <!-- jquery.inputmask -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.1/jquery.inputmask.bundle.min.js" data-th-src="@{/webjars/jquery.inputmask/min/jquery.inputmask.bundle.min.js}"></script>
-    <script type="text/javascript" data-th-inline="javascript">
-      (function(jQuery) {
-        jQuery(document).ready(
-      	  function() {
-      	    Inputmask.extendAliases({
-      	      'numeric' : {
-      	         'groupSeparator' : /*[[#{label_inputmask_groupSeparator}]]*/'.',
-      	         'radixPoint' : /*[[#{label_inputmask_radixPoint}]]*/','
-      	       },
-      	       'currency' : {
-      	          'prefix' : /*[[#{label_inputmask_prefix}]]*/'',
-      	          'suffix' : /*[[#{label_inputmask_suffix}]]*/' €'
-      	        }
-      	    });
-      	 });
-       })(jQuery);
-    </script>
-    <script src="../../static/public/js/inputmask-defaults.js" data-th-src="@{/public/js/inputmask-defaults.js}"></script>
+		<!-- jquery.inputmask -->
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.1/jquery.inputmask.bundle.min.js"
+			data-th-src="@{/webjars/jquery.inputmask/min/jquery.inputmask.bundle.min.js}"></script>
+		<script type="text/javascript" data-th-inline="javascript">
+			(function(jQuery) {
+				jQuery(document).ready(
+					function() {
+						Inputmask.extendAliases({
+							'numeric' : {
+								'groupSeparator' : /*[[#{label_inputmask_groupSeparator}]]*/ '.',
+								'radixPoint' : /*[[#{label_inputmask_radixPoint}]]*/ ','
+							},
+							'currency' : {
+								'prefix' : /*[[#{label_inputmask_prefix}]]*/ '',
+								'suffix' : /*[[#{label_inputmask_suffix}]]*/ ' €'
+							}
+						});
+					});
+			})(jQuery);
+		</script>
+		<script src="../../static/public/js/inputmask-defaults.js"
+			data-th-src="@{/public/js/inputmask-defaults.js}"></script>
 
-    <!-- JQuery Validation -->
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js" data-th-src="@{/webjars/jquery-validation/dist/jquery.validate.min.js}">
+		<!-- JQuery Validation -->
+		<script
+			src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"
+			data-th-src="@{/webjars/jquery-validation/dist/jquery.validate.min.js}">
       </script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" data-th-src="@{/webjars/jquery-validation/dist/additional-methods.min.js}">
+		<script
+			src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"
+			data-th-src="@{/webjars/jquery-validation/dist/additional-methods.min.js}">
       </script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_es.js" data-th-src="@{/webjars/jquery-validation/src/localization/messages_}+${#locale.language}+'.js'" data-th-if="${#locale.language} != 'en'">
+		<script
+			src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_es.js"
+			data-th-src="@{/webjars/jquery-validation/src/localization/messages_}+${#locale.language}+'.js'"
+			data-th-if="${#locale.language} != 'en'">
       </script>
-    <script src="../../static/public/js/validation-defaults.js" data-th-src="@{/public/js/validation-defaults.js}">
+		<script src="../../static/public/js/validation-defaults.js"
+			data-th-src="@{/public/js/validation-defaults.js}">
       </script>
-    <script type="text/javascript" data-th-inline="javascript">
+		<script type="text/javascript" data-th-inline="javascript">
       (function(jQuery) {
          jQuery(document).ready(function() {
       	   jQuery.extend( jQuery.validator.messages, {
@@ -170,8 +246,8 @@
       })(jQuery);
       </script>
 
-    </div>
+	</div>
 
-  </body>
+</body>
 
 </html>

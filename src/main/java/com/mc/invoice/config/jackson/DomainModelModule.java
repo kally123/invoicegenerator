@@ -1,4 +1,5 @@
 package com.mc.invoice.config.jackson;
+
 import org.springframework.roo.addon.web.mvc.controller.annotations.config.RooDomainModelModule;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.mc.invoice.domain.Accomidation;
@@ -19,14 +20,14 @@ import org.springframework.boot.jackson.JsonComponent;
 @JsonComponent
 public class DomainModelModule extends SimpleModule {
 
-    /**
-     * TODO Auto-generated constructor documentation
-     *
-     */
-    public DomainModelModule() {
-        // Mixin registration
-        setMixInAnnotation(Accomidation.class, AccomidationJsonMixin.class);
-        setMixInAnnotation(Customer.class, CustomerJsonMixin.class);
-        setMixInAnnotation(CustomerBooking.class, CustomerBookingJsonMixin.class);
-    }
+	/**
+	 * TODO Auto-generated constructor documentation
+	 *
+	 */
+	public DomainModelModule() {
+		// Mixin registration
+		setMixInAnnotation(Accomidation.class, AccomidationJsonMixin.class);
+		setMixInAnnotation(Customer.class, CustomerJsonMixin.class);
+		setMixInAnnotation(CustomerBooking.class, CustomerBookingJsonMixin.class);
+	}
 }

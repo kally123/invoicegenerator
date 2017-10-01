@@ -1,4 +1,5 @@
 package com.mc.invoice.config;
+
 import org.springframework.roo.addon.layers.repository.jpa.annotations.RooJpaRepositoryConfiguration;
 import com.mc.invoice.InvoiceGeneraorApplication;
 import io.springlets.data.jpa.repository.support.DetachableJpaRepositoryImpl;
