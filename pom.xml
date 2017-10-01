@@ -448,6 +448,11 @@
 			<artifactId>logback-core</artifactId>
 			<version>1.1.11</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
+		 <dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.5.12</version>
+	  </dependency>
 	</dependencies>
 	<repositories>
 		<repository>
