@@ -1,5 +1,6 @@
 package com.mc.pdfgenerate;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -7,31 +8,47 @@ import java.lang.reflect.Field;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
-import com.mc.invoice.domain.Accomidation;
-import com.mc.invoice.domain.Customer;
+import com.mc.invoice.InvoicegeneratorApplication;
 import com.mc.invoice.domain.CustomerBooking;
-import com.mc.invoice.enumtype.AccomidationType;
 
 /**
- * @author Dinesh R
+ * @author Kalyan
  */
 
 public class GeneratePdf {
 
-	public void main(String[] args)
-			throws IOException, DocumentException, IllegalArgumentException, IllegalAccessException {
-		CustomerBooking customerBooking = new CustomerBooking();
-		populateDummyData(customerBooking);
-		new GeneratePdf().generatePdf(customerBooking, "Untitled 1.pdf", "CustomerInvoice.pdf");
+	private static GeneratePdf generatePdf = null;
+
+	public static GeneratePdf getInstance() {
+		if (generatePdf == null) {
+			generatePdf = new GeneratePdf();
+		}
+		return generatePdf;
+	}
+
+	private String getFilePath() {
+		File jarPath = new File(
+				InvoicegeneratorApplication.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+		System.out.println("jarPath.getParent() : " + jarPath.getParent());
+		String folderPath = jarPath.getPath().contains("jar") ? jarPath.getParentFile().getParentFile().getParent()
+				: jarPath.getParentFile().getParentFile().getAbsolutePath();
+		if (System.getProperty("os.name").toLowerCase().indexOf("mac") > -1) {
+			folderPath = folderPath.replace("file:", "");
+		}
+		System.out.println("propertiesPath :" + folderPath);
+		return folderPath;
 	}
 
 	public void generatePdf(CustomerBooking customerBooking, String templateName, String outputPdf) {
 		PdfReader pdfTemplate = null;
 		PdfStamper stamper = null;
 		try {
-			System.out.println(customerBooking.toString() + " Invoice is getting generated..");
+			System.out.println(customerBooking.toString() + " Invoice for "
+					+ customerBooking.getCustomer().getCustomerName() + " is getting generated..");
+
 			pdfTemplate = new PdfReader(templateName);
-			FileOutputStream fileOutputStream = new FileOutputStream(outputPdf);
+			FileOutputStream fileOutputStream = new FileOutputStream(
+					new File(getFilePath() + File.separatorChar + outputPdf));
 			stamper = new PdfStamper(pdfTemplate, fileOutputStream);
 			stamper.setFormFlattening(true);
 
@@ -67,18 +84,9 @@ public class GeneratePdf {
 			Object value = field.get(obj);
 			if (value != null) {
 				stamper.getAcroFields().setField(field.getName(), value.toString());
+				// System.out.println(field.getName() + "/" + value.toString());
 			}
 		}
 	}
 
-	private void populateDummyData(CustomerBooking customerBooking) {
-		Accomidation a = new Accomidation();
-		a.setAccomidationType(AccomidationType.SingleRoom);
-		a.setPrice(1000);
-		customerBooking.setAccomidation(a);
-		customerBooking.setNoOfDays(2);
-		Customer customer = new Customer();
-		customer.setCustomerName("Kalyan");
-		customerBooking.setCustomer(customer);
-	}
 }

@@ -10,9 +10,9 @@
 		<relativePath></relativePath>
 	</parent>
 	<groupId>com.mc.invoice</groupId>
-	<artifactId>invoicegeneraor</artifactId>
+	<artifactId>invoicegenerator</artifactId>
 	<version>1.0</version>
-	<name>InvoiceGeneraor</name>
+	<name>invoicegenerator</name>
 	<properties>
 		<dynamicjasper-fonts.version>1.0</dynamicjasper-fonts.version>
 		<respond.version>1.4.2</respond.version>
@@ -279,11 +279,6 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>io.springlets</groupId>
 			<artifactId>springlets-data-jpa</artifactId>
 		</dependency>
@@ -446,7 +441,7 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
-			<version>1.1.11</version><!--$NO-MVN-MAN-VER$-->
+			<version>1.1.11</version>
 		</dependency>
 	</dependencies>
 	<repositories>

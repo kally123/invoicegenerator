@@ -8,5 +8,5 @@ package com.mc.invoice.enumtype;
  */
 public enum AccomidationType {
 
-	SingleRoom, DoubleRoom, DeluxRoom, SuiteRoom
+    StandardRoom, DoubleRoom, DeluxRoom, SuiteRoom, ExtraBed
 }

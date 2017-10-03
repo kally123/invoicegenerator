@@ -1,5 +1,4 @@
 package com.mc.invoice.web;
-
 import com.mc.invoice.domain.CustomerBooking;
 import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
 import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
@@ -35,107 +34,103 @@ import org.springframework.web.util.UriComponents;
 @RequestMapping(value = "/customerbookings/{customerBooking}", name = "CustomerBookingsItemJsonController", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CustomerBookingsItemJsonController {
 
-	/**
-	 * TODO Auto-generated attribute documentation
-	 *
-	 */
-	private CustomerBookingService customerBookingService;
+    /**
+     * TODO Auto-generated attribute documentation
+     *
+     */
+    private CustomerBookingService customerBookingService;
 
-	/**
-	 * TODO Auto-generated constructor documentation
-	 *
-	 * @param customerBookingService
-	 */
-	@Autowired
-	public CustomerBookingsItemJsonController(CustomerBookingService customerBookingService) {
-		this.customerBookingService = customerBookingService;
-	}
+    /**
+     * TODO Auto-generated constructor documentation
+     *
+     * @param customerBookingService
+     */
+    @Autowired
+    public CustomerBookingsItemJsonController(CustomerBookingService customerBookingService) {
+        this.customerBookingService = customerBookingService;
+    }
 
-	/**
-	 * TODO Auto-generated method documentation
-	 *
-	 * @return CustomerBookingService
-	 */
-	public CustomerBookingService getCustomerBookingService() {
-		return customerBookingService;
-	}
+    /**
+     * TODO Auto-generated method documentation
+     *
+     * @return CustomerBookingService
+     */
+    public CustomerBookingService getCustomerBookingService() {
+        return customerBookingService;
+    }
 
-	/**
-	 * TODO Auto-generated method documentation
-	 *
-	 * @param customerBookingService
-	 */
-	public void setCustomerBookingService(CustomerBookingService customerBookingService) {
-		this.customerBookingService = customerBookingService;
-	}
+    /**
+     * TODO Auto-generated method documentation
+     *
+     * @param customerBookingService
+     */
+    public void setCustomerBookingService(CustomerBookingService customerBookingService) {
+        this.customerBookingService = customerBookingService;
+    }
 
-	/**
-	 * TODO Auto-generated method documentation
-	 *
-	 * @param id
-	 * @return CustomerBooking
-	 */
-	@ModelAttribute
-	public CustomerBooking getCustomerBooking(@PathVariable("customerBooking") Long id) {
-		CustomerBooking customerBooking = customerBookingService.findOne(id);
-		if (customerBooking == null) {
-			throw new NotFoundException(String.format("CustomerBooking with identifier '%s' not found", id));
-		}
-		return customerBooking;
-	}
+    /**
+     * TODO Auto-generated method documentation
+     *
+     * @param id
+     * @return CustomerBooking
+     */
+    @ModelAttribute
+    public CustomerBooking getCustomerBooking(@PathVariable("customerBooking") Long id) {
+        CustomerBooking customerBooking = customerBookingService.findOne(id);
+        if (customerBooking == null) {
+            throw new NotFoundException(String.format("CustomerBooking with identifier '%s' not found", id));
+        }
+        return customerBooking;
+    }
 
-	/**
-	 * TODO Auto-generated method documentation
-	 *
-	 * @param customerBooking
-	 * @return ResponseEntity
-	 */
-	@GetMapping(name = "show")
-	public ResponseEntity<?> show(@ModelAttribute CustomerBooking customerBooking) {
-		return ResponseEntity.ok(customerBooking);
-	}
+    /**
+     * TODO Auto-generated method documentation
+     *
+     * @param customerBooking
+     * @return ResponseEntity
+     */
+    @GetMapping(name = "show")
+    public ResponseEntity<?> show(@ModelAttribute CustomerBooking customerBooking) {
+        return ResponseEntity.ok(customerBooking);
+    }
 
-	/**
-	 * TODO Auto-generated method documentation
-	 *
-	 * @param customerBooking
-	 * @return UriComponents
-	 */
-	public static UriComponents showURI(CustomerBooking customerBooking) {
-		return MvcUriComponentsBuilder
-				.fromMethodCall(
-						MvcUriComponentsBuilder.on(CustomerBookingsItemJsonController.class).show(customerBooking))
-				.buildAndExpand(customerBooking.getId()).encode();
-	}
+    /**
+     * TODO Auto-generated method documentation
+     *
+     * @param customerBooking
+     * @return UriComponents
+     */
+    public static UriComponents showURI(CustomerBooking customerBooking) {
+        return MvcUriComponentsBuilder.fromMethodCall(MvcUriComponentsBuilder.on(CustomerBookingsItemJsonController.class).show(customerBooking)).buildAndExpand(customerBooking.getId()).encode();
+    }
 
-	/**
-	 * TODO Auto-generated method documentation
-	 *
-	 * @param storedCustomerBooking
-	 * @param customerBooking
-	 * @param result
-	 * @return ResponseEntity
-	 */
-	@PutMapping(name = "update")
-	public ResponseEntity<?> update(@ModelAttribute CustomerBooking storedCustomerBooking,
-			@Valid @RequestBody CustomerBooking customerBooking, BindingResult result) {
-		if (result.hasErrors()) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
-		}
-		customerBooking.setId(storedCustomerBooking.getId());
-		getCustomerBookingService().save(customerBooking);
-		return ResponseEntity.ok().build();
-	}
+    /**
+     * TODO Auto-generated method documentation
+     *
+     * @param storedCustomerBooking
+     * @param customerBooking
+     * @param result
+     * @return ResponseEntity
+     */
+    @PutMapping(name = "update")
+    public ResponseEntity<?> update(@ModelAttribute CustomerBooking storedCustomerBooking, @Valid @RequestBody CustomerBooking customerBooking, BindingResult result) {
+        if (result.hasErrors()) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
+        }
+        customerBooking.setId(storedCustomerBooking.getId());
+        getCustomerBookingService().save(customerBooking);
+        return ResponseEntity.ok().build();
+    }
 
-	/**
-	 * TODO Auto-generated method documentation
-	 *
-	 * @param customerBooking
-	 * @return ResponseEntity
-	 */
-	@DeleteMapping(name = "delete")
-	public ResponseEntity<?> delete(@ModelAttribute CustomerBooking customerBooking) {
-		getCustomerBookingService().delete(customerBooking);
-		return ResponseEntity.ok().build();
-	}
+    /**
+     * TODO Auto-generated method documentation
+     *
+     * @param customerBooking
+     * @return ResponseEntity
+     */
+    @DeleteMapping(name = "delete")
+    public ResponseEntity<?> delete(@ModelAttribute CustomerBooking customerBooking) {
+        getCustomerBookingService().delete(customerBooking);
+        return ResponseEntity.ok().build();
+    }
 }

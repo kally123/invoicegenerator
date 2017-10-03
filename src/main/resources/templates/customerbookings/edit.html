@@ -3,7 +3,7 @@
   <head id="head">
 
     <title data-th-text="#{label_edit_entity(#{label_customerbooking})}">
-    Edit CustomerBooking - Invoice Generator application</title>
+    Edit CustomerBooking - Spring Roo application</title>
 
     <!-- DateTimePicker -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css" data-th-href="@{/webjars/datetimepicker/2.5.4/build/jquery.datetimepicker.min.css}" />
@@ -78,6 +78,30 @@
       <span id="accomidation-error" class="help-block" data-th-if="${#fields.hasErrors('accomidation')}" data-th-errors="*{accomidation}">Error message.</span>
     </div>
 </div>
+<div class="form-group has-error has-feedback" data-z="ce07a770" id="customerbooking-organization-field" data-th-classappend="${#fields.hasErrors('organization')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="organization" class="col-md-3 control-label" data-th-text="#{label_customerbooking_organization}">organization</label>
+  <div class="col-md-6">
+    <input id="organization" name="organization" data-th-value="*{{organization}}" type="text" class="form-control" placeholder="organization" data-th-placeholder="#{label_customerbooking_organization}" data-toggle="tooltip" aria-describedby="organizationStatus" />
+      <span data-th-classappend="${#fields.hasErrors('organization')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('organization')}" aria-hidden="true"></span>
+      <span id="organization-error" class="help-block" data-th-if="${#fields.hasErrors('organization')}" data-th-errors="*{organization}">Error message.</span>
+  </div>
+</div>
+<div class="form-group has-error has-feedback" data-z="cbd905ae" id="customerbooking-checkindate-field" data-th-classappend="${#fields.hasErrors('checkInDate')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="checkInDate" class="col-md-3 control-label" data-th-text="#{label_customerbooking_checkindate}">checkInDate</label>
+  <div class="col-md-6">
+    <input id="checkInDate" name="checkInDate" data-th-value="*{{checkInDate}}" type="text" class="form-control" placeholder="checkInDate" data-th-placeholder="#{label_customerbooking_checkindate}" data-toggle="tooltip" aria-describedby="checkInDateStatus" />
+      <span data-th-classappend="${#fields.hasErrors('checkInDate')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('checkInDate')}" aria-hidden="true"></span>
+      <span id="checkInDate-error" class="help-block" data-th-if="${#fields.hasErrors('checkInDate')}" data-th-errors="*{checkInDate}">Error message.</span>
+  </div>
+</div>
+<div class="form-group has-error has-feedback" data-z="b5aa1f50" id="customerbooking-checkoutdate-field" data-th-classappend="${#fields.hasErrors('checkOutDate')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="checkOutDate" class="col-md-3 control-label" data-th-text="#{label_customerbooking_checkoutdate}">checkOutDate</label>
+  <div class="col-md-6">
+    <input id="checkOutDate" name="checkOutDate" data-th-value="*{{checkOutDate}}" type="text" class="form-control" placeholder="checkOutDate" data-th-placeholder="#{label_customerbooking_checkoutdate}" data-toggle="tooltip" aria-describedby="checkOutDateStatus" />
+      <span data-th-classappend="${#fields.hasErrors('checkOutDate')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('checkOutDate')}" aria-hidden="true"></span>
+      <span id="checkOutDate-error" class="help-block" data-th-if="${#fields.hasErrors('checkOutDate')}" data-th-errors="*{checkOutDate}">Error message.</span>
+  </div>
+</div>
 <div class="form-group has-error has-feedback" data-z="1b5278b0" id="customerbooking-noofdays-field" data-th-classappend="${#fields.hasErrors('noOfDays')}? 'has-error has-feedback'" data-th-class="form-group">
   <label for="noOfDays" class="col-md-3 control-label" data-th-text="#{label_customerbooking_noofdays}">noOfDays</label>
   <div class="col-md-3">
@@ -86,12 +110,28 @@
       <span id="noOfDays-error" class="help-block" data-th-if="${#fields.hasErrors('noOfDays')}" data-th-errors="*{noOfDays}">Error message.</span>
   </div>
 </div>
-<div class="form-group has-error has-feedback" data-z="ed99c550" id="customerbooking-totalprice-field" data-th-classappend="${#fields.hasErrors('totalPrice')}? 'has-error has-feedback'" data-th-class="form-group">
-  <label for="totalPrice" class="col-md-3 control-label" data-th-text="#{label_customerbooking_totalprice}">totalPrice</label>
+<div class="form-group has-error has-feedback" data-z="6380a84e" id="customerbooking-noofrooms-field" data-th-classappend="${#fields.hasErrors('noOfRooms')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="noOfRooms" class="col-md-3 control-label" data-th-text="#{label_customerbooking_noofrooms}">noOfRooms</label>
   <div class="col-md-3">
-    <input id="totalPrice" name="totalPrice" data-th-value="*{{totalPrice}}" type="text" class="form-control inputmask" placeholder="totalPrice" data-th-placeholder="#{label_customerbooking_totalprice}" data-toggle="tooltip" aria-describedby="totalPriceStatus" data-inputmask-alias="numeric" data-inputmask-digits="0" min="1" />
-      <span data-th-classappend="${#fields.hasErrors('totalPrice')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('totalPrice')}" aria-hidden="true"></span>
-      <span id="totalPrice-error" class="help-block" data-th-if="${#fields.hasErrors('totalPrice')}" data-th-errors="*{totalPrice}">Error message.</span>
+    <input id="noOfRooms" name="noOfRooms" data-th-value="*{{noOfRooms}}" type="text" class="form-control inputmask" placeholder="noOfRooms" data-th-placeholder="#{label_customerbooking_noofrooms}" data-toggle="tooltip" aria-describedby="noOfRoomsStatus" data-inputmask-alias="numeric" data-inputmask-digits="0" min="1" />
+      <span data-th-classappend="${#fields.hasErrors('noOfRooms')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('noOfRooms')}" aria-hidden="true"></span>
+      <span id="noOfRooms-error" class="help-block" data-th-if="${#fields.hasErrors('noOfRooms')}" data-th-errors="*{noOfRooms}">Error message.</span>
+  </div>
+</div>
+<div class="form-group has-error has-feedback" data-z="f078aece" id="customerbooking-roomnumbers-field" data-th-classappend="${#fields.hasErrors('roomNumbers')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="roomNumbers" class="col-md-3 control-label" data-th-text="#{label_customerbooking_roomnumbers}">roomNumbers</label>
+  <div class="col-md-6">
+    <input id="roomNumbers" name="roomNumbers" data-th-value="*{{roomNumbers}}" type="text" class="form-control" placeholder="roomNumbers" data-th-placeholder="#{label_customerbooking_roomnumbers}" data-toggle="tooltip" aria-describedby="roomNumbersStatus" />
+      <span data-th-classappend="${#fields.hasErrors('roomNumbers')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('roomNumbers')}" aria-hidden="true"></span>
+      <span id="roomNumbers-error" class="help-block" data-th-if="${#fields.hasErrors('roomNumbers')}" data-th-errors="*{roomNumbers}">Error message.</span>
+  </div>
+</div>
+<div class="form-group has-error has-feedback" data-z="8bb3be2e" id="customerbooking-specialinstructions-field" data-th-classappend="${#fields.hasErrors('specialInstructions')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="specialInstructions" class="col-md-3 control-label" data-th-text="#{label_customerbooking_specialinstructions}">specialInstructions</label>
+  <div class="col-md-6">
+    <input id="specialInstructions" name="specialInstructions" data-th-value="*{{specialInstructions}}" type="text" class="form-control" placeholder="specialInstructions" data-th-placeholder="#{label_customerbooking_specialinstructions}" data-toggle="tooltip" aria-describedby="specialInstructionsStatus" />
+      <span data-th-classappend="${#fields.hasErrors('specialInstructions')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('specialInstructions')}" aria-hidden="true"></span>
+      <span id="specialInstructions-error" class="help-block" data-th-if="${#fields.hasErrors('specialInstructions')}" data-th-errors="*{specialInstructions}">Error message.</span>
   </div>
 </div>
 <div class="form-group has-error has-feedback" data-z="d1a1d590" id="customerbooking-customerdiscount-field" data-th-classappend="${#fields.hasErrors('customerDiscount')}? 'has-error has-feedback'" data-th-class="form-group">
@@ -100,6 +140,46 @@
     <input id="customerDiscount" name="customerDiscount" data-th-value="*{{customerDiscount}}" type="text" class="form-control inputmask" placeholder="customerDiscount" data-th-placeholder="#{label_customerbooking_customerdiscount}" data-toggle="tooltip" aria-describedby="customerDiscountStatus" data-inputmask-alias="numeric" data-inputmask-digits="0" />
       <span data-th-classappend="${#fields.hasErrors('customerDiscount')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('customerDiscount')}" aria-hidden="true"></span>
       <span id="customerDiscount-error" class="help-block" data-th-if="${#fields.hasErrors('customerDiscount')}" data-th-errors="*{customerDiscount}">Error message.</span>
+  </div>
+</div>
+<div class="form-group has-error has-feedback" data-z="5dbc852e" id="customerbooking-amountafterdiscount-field" data-th-classappend="${#fields.hasErrors('amountAfterDiscount')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="amountAfterDiscount" class="col-md-3 control-label" data-th-text="#{label_customerbooking_amountafterdiscount}">amountAfterDiscount</label>
+  <div class="col-md-3">
+    <input id="amountAfterDiscount" name="amountAfterDiscount" data-th-value="*{{amountAfterDiscount}}" type="text" class="form-control inputmask" placeholder="amountAfterDiscount" data-th-placeholder="#{label_customerbooking_amountafterdiscount}" data-toggle="tooltip" aria-describedby="amountAfterDiscountStatus" data-inputmask-alias="numeric" data-inputmask-digits="2" />
+      <span data-th-classappend="${#fields.hasErrors('amountAfterDiscount')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('amountAfterDiscount')}" aria-hidden="true"></span>
+      <span id="amountAfterDiscount-error" class="help-block" data-th-if="${#fields.hasErrors('amountAfterDiscount')}" data-th-errors="*{amountAfterDiscount}">Error message.</span>
+  </div>
+</div>
+<div class="form-group has-error has-feedback" data-z="da8a7010" id="customerbooking-sgst-field" data-th-classappend="${#fields.hasErrors('sGst')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="sGst" class="col-md-3 control-label" data-th-text="#{label_customerbooking_sgst}">sGst</label>
+  <div class="col-md-3">
+    <input id="sGst" name="sGst" data-th-value="*{{sGst}}" type="text" class="form-control inputmask" placeholder="sGst" data-th-placeholder="#{label_customerbooking_sgst}" data-toggle="tooltip" aria-describedby="sGstStatus" data-inputmask-alias="numeric" data-inputmask-digits="2" />
+      <span data-th-classappend="${#fields.hasErrors('sGst')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('sGst')}" aria-hidden="true"></span>
+      <span id="sGst-error" class="help-block" data-th-if="${#fields.hasErrors('sGst')}" data-th-errors="*{sGst}">Error message.</span>
+  </div>
+</div>
+<div class="form-group has-error has-feedback" data-z="be5b6e10" id="customerbooking-cgst-field" data-th-classappend="${#fields.hasErrors('cGst')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="cGst" class="col-md-3 control-label" data-th-text="#{label_customerbooking_cgst}">cGst</label>
+  <div class="col-md-3">
+    <input id="cGst" name="cGst" data-th-value="*{{cGst}}" type="text" class="form-control inputmask" placeholder="cGst" data-th-placeholder="#{label_customerbooking_cgst}" data-toggle="tooltip" aria-describedby="cGstStatus" data-inputmask-alias="numeric" data-inputmask-digits="2" />
+      <span data-th-classappend="${#fields.hasErrors('cGst')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('cGst')}" aria-hidden="true"></span>
+      <span id="cGst-error" class="help-block" data-th-if="${#fields.hasErrors('cGst')}" data-th-errors="*{cGst}">Error message.</span>
+  </div>
+</div>
+<div class="form-group has-error has-feedback" data-z="a487a430" id="customerbooking-totalaftertaxperroom-field" data-th-classappend="${#fields.hasErrors('totalAfterTaxPerRoom')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="totalAfterTaxPerRoom" class="col-md-3 control-label" data-th-text="#{label_customerbooking_totalaftertaxperroom}">totalAfterTaxPerRoom</label>
+  <div class="col-md-3">
+    <input id="totalAfterTaxPerRoom" name="totalAfterTaxPerRoom" data-th-value="*{{totalAfterTaxPerRoom}}" type="text" class="form-control inputmask" placeholder="totalAfterTaxPerRoom" data-th-placeholder="#{label_customerbooking_totalaftertaxperroom}" data-toggle="tooltip" aria-describedby="totalAfterTaxPerRoomStatus" data-inputmask-alias="numeric" data-inputmask-digits="2" />
+      <span data-th-classappend="${#fields.hasErrors('totalAfterTaxPerRoom')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('totalAfterTaxPerRoom')}" aria-hidden="true"></span>
+      <span id="totalAfterTaxPerRoom-error" class="help-block" data-th-if="${#fields.hasErrors('totalAfterTaxPerRoom')}" data-th-errors="*{totalAfterTaxPerRoom}">Error message.</span>
+  </div>
+</div>
+<div class="form-group has-error has-feedback" data-z="77ac464e" id="customerbooking-finalamountaftertax-field" data-th-classappend="${#fields.hasErrors('finalAmountAfterTax')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="finalAmountAfterTax" class="col-md-3 control-label" data-th-text="#{label_customerbooking_finalamountaftertax}">finalAmountAfterTax</label>
+  <div class="col-md-3">
+    <input id="finalAmountAfterTax" name="finalAmountAfterTax" data-th-value="*{{finalAmountAfterTax}}" type="text" class="form-control inputmask" placeholder="finalAmountAfterTax" data-th-placeholder="#{label_customerbooking_finalamountaftertax}" data-toggle="tooltip" aria-describedby="finalAmountAfterTaxStatus" data-inputmask-alias="numeric" data-inputmask-digits="2" />
+      <span data-th-classappend="${#fields.hasErrors('finalAmountAfterTax')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('finalAmountAfterTax')}" aria-hidden="true"></span>
+      <span id="finalAmountAfterTax-error" class="help-block" data-th-if="${#fields.hasErrors('finalAmountAfterTax')}" data-th-errors="*{finalAmountAfterTax}">Error message.</span>
   </div>
 </div>
              </fieldset>

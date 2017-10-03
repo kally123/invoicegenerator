@@ -2,7 +2,7 @@
 <html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
   <head id="head">
 
-    <title data-th-text="|#{label_show_entity(#{label_customerbooking})}|">Show CustomerBooking - Invoice Generator application</title>
+    <title data-th-text="|#{label_show_entity(#{label_customerbooking})}|">Show CustomerBooking - Spring Roo application</title>
 
   </head>
 
@@ -36,17 +36,57 @@
             	      <strong data-th-text="#{label_customerbooking_accomidation}">accomidation</strong>
                     <span data-th-text="*{{accomidation}}">accomidationValue</span>
          	        </li>
+                  <li id="customerbooking-organization-field" data-z="ce07a770">
+            	      <strong data-th-text="#{label_customerbooking_organization}">organization</strong>
+                    <span data-th-text="*{{organization}}">organizationValue</span>
+         	        </li>
+                  <li id="customerbooking-checkindate-field" data-z="cbd905ae">
+            	      <strong data-th-text="#{label_customerbooking_checkindate}">checkInDate</strong>
+                    <span data-th-text="*{{checkInDate}}">checkInDateValue</span>
+         	        </li>
+                  <li id="customerbooking-checkoutdate-field" data-z="b5aa1f50">
+            	      <strong data-th-text="#{label_customerbooking_checkoutdate}">checkOutDate</strong>
+                    <span data-th-text="*{{checkOutDate}}">checkOutDateValue</span>
+         	        </li>
                   <li id="customerbooking-noofdays-field" data-z="1b5278b0">
             	      <strong data-th-text="#{label_customerbooking_noofdays}">noOfDays</strong>
                     <span data-th-text="*{{noOfDays}}">noOfDaysValue</span>
          	        </li>
-                  <li id="customerbooking-totalprice-field" data-z="ed99c550">
-            	      <strong data-th-text="#{label_customerbooking_totalprice}">totalPrice</strong>
-                    <span data-th-text="*{{totalPrice}}">totalPriceValue</span>
+                  <li id="customerbooking-noofrooms-field" data-z="6380a84e">
+            	      <strong data-th-text="#{label_customerbooking_noofrooms}">noOfRooms</strong>
+                    <span data-th-text="*{{noOfRooms}}">noOfRoomsValue</span>
+         	        </li>
+                  <li id="customerbooking-roomnumbers-field" data-z="f078aece">
+            	      <strong data-th-text="#{label_customerbooking_roomnumbers}">roomNumbers</strong>
+                    <span data-th-text="*{{roomNumbers}}">roomNumbersValue</span>
+         	        </li>
+                  <li id="customerbooking-specialinstructions-field" data-z="8bb3be2e">
+            	      <strong data-th-text="#{label_customerbooking_specialinstructions}">specialInstructions</strong>
+                    <span data-th-text="*{{specialInstructions}}">specialInstructionsValue</span>
          	        </li>
                   <li id="customerbooking-customerdiscount-field" data-z="d1a1d590">
             	      <strong data-th-text="#{label_customerbooking_customerdiscount}">customerDiscount</strong>
                     <span data-th-text="*{{customerDiscount}}">customerDiscountValue</span>
+         	        </li>
+                  <li id="customerbooking-amountafterdiscount-field" data-z="5dbc852e">
+            	      <strong data-th-text="#{label_customerbooking_amountafterdiscount}">amountAfterDiscount</strong>
+                    <span data-th-text="*{{amountAfterDiscount}}">amountAfterDiscountValue</span>
+         	        </li>
+                  <li id="customerbooking-sgst-field" data-z="da8a7010">
+            	      <strong data-th-text="#{label_customerbooking_sgst}">sGst</strong>
+                    <span data-th-text="*{{sGst}}">sGstValue</span>
+         	        </li>
+                  <li id="customerbooking-cgst-field" data-z="be5b6e10">
+            	      <strong data-th-text="#{label_customerbooking_cgst}">cGst</strong>
+                    <span data-th-text="*{{cGst}}">cGstValue</span>
+         	        </li>
+                  <li id="customerbooking-totalaftertaxperroom-field" data-z="a487a430">
+            	      <strong data-th-text="#{label_customerbooking_totalaftertaxperroom}">totalAfterTaxPerRoom</strong>
+                    <span data-th-text="*{{totalAfterTaxPerRoom}}">totalAfterTaxPerRoomValue</span>
+         	        </li>
+                  <li id="customerbooking-finalamountaftertax-field" data-z="77ac464e">
+            	      <strong data-th-text="#{label_customerbooking_finalamountaftertax}">finalAmountAfterTax</strong>
+                    <span data-th-text="*{{finalAmountAfterTax}}">finalAmountAfterTaxValue</span>
          	        </li>
               </ul>
             </div>

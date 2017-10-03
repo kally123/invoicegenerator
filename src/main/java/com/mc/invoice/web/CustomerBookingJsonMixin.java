@@ -1,5 +1,4 @@
 package com.mc.invoice.web;
-
 import com.mc.invoice.domain.CustomerBooking;
 import org.springframework.roo.addon.web.mvc.controller.annotations.config.RooJsonMixin;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
