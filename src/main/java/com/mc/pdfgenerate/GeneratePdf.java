@@ -32,10 +32,8 @@ public class GeneratePdf {
 		System.out.println("jarPath.getParent() : " + jarPath.getParent());
 		String folderPath = jarPath.getPath().contains("jar") ? jarPath.getParentFile().getParentFile().getParent()
 				: jarPath.getParentFile().getParentFile().getAbsolutePath();
-		if (System.getProperty("os.name").toLowerCase().indexOf("mac") > -1) {
-			folderPath = folderPath.replace("file:", "");
-		}
-		System.out.println("propertiesPath :" + folderPath);
+		folderPath = folderPath.replace("file:", "");
+		System.out.println("propertiesPath for PDF Generation :" + folderPath);
 		return folderPath;
 	}
 
@@ -43,8 +41,8 @@ public class GeneratePdf {
 		PdfReader pdfTemplate = null;
 		PdfStamper stamper = null;
 		try {
-			System.out.println(customerBooking.toString() + " Invoice for "
-					+ customerBooking.getCustomer().getCustomerName() + " is getting generated..");
+			System.out.println(
+					"Invoice for " + customerBooking.getCustomer().getCustomerName() + " is getting generated..");
 
 			pdfTemplate = new PdfReader(templateName);
 			FileOutputStream fileOutputStream = new FileOutputStream(
