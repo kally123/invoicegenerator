@@ -35,9 +35,7 @@ public class DataSourceBean {
 			String propertiesPath = jarPath.getPath().contains("jar")
 					? jarPath.getParentFile().getParentFile().getParent()
 					: jarPath.getParentFile().getParentFile().getAbsolutePath();
-			if (System.getProperty("os.name").toLowerCase().indexOf("mac") > -1) {
-				propertiesPath = propertiesPath.replace("file:", "");
-			}
+			propertiesPath = propertiesPath.replace("file:", "");
 			System.out.println("propertiesPath :" + propertiesPath);
 			prop.load(new FileInputStream(propertiesPath + "/app.properties"));
 		} catch (IOException e1) {
