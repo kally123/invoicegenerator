@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfReader;
@@ -49,6 +51,9 @@ public class GeneratePdf {
 					new File(getFilePath() + File.separatorChar + outputPdf));
 			stamper = new PdfStamper(pdfTemplate, fileOutputStream);
 			stamper.setFormFlattening(true);
+			
+			// print 1 to 10 values in iteration pdf. 
+			stamper.getAcroFields().setField("list",getValues());
 
 			printContents(stamper, customerBooking.getAccomidation());
 			printContents(stamper, customerBooking.getCustomer());
@@ -85,6 +90,24 @@ public class GeneratePdf {
 				// System.out.println(field.getName() + "/" + value.toString());
 			}
 		}
+	}
+	
+	private String getValues() {
+		// TODO Auto-generated method stub
+		List<String> li = new ArrayList<String>();
+		for(int i=0; i<10; i++)
+		{
+			li.add(String.valueOf(i));
+			li.add("\n");			
+		}
+		
+		StringBuilder builder = new StringBuilder();
+		for(String s : li) {
+		    builder.append(s);
+		}
+		String str = builder.toString();
+		
+		return str;
 	}
 
 }
