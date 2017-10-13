@@ -1,15 +1,13 @@
 package com.mc.invoice.web;
-import com.mc.invoice.domain.Customer;
-import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
-import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
-import org.springframework.roo.addon.web.mvc.controller.annotations.responses.json.RooJSON;
-import com.mc.invoice.service.api.CustomerService;
-import io.springlets.web.NotFoundException;
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
+import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
+import org.springframework.roo.addon.web.mvc.controller.annotations.responses.json.RooJSON;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.util.UriComponents;
 
+import com.mc.invoice.domain.Customer;
+import com.mc.invoice.service.api.CustomerService;
+
+import io.springlets.web.NotFoundException;
+
 /**
  * = CustomersItemJsonController
  *
@@ -31,7 +34,7 @@ import org.springframework.web.util.UriComponents;
 @RooController(entity = Customer.class, type = ControllerType.ITEM)
 @RooJSON
 @RestController
-@RequestMapping(value = "/customers/{customer}", name = "CustomersItemJsonController", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/customers/{customer}", name = "CustomersItemJsonController", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CustomersItemJsonController {
 
     /**

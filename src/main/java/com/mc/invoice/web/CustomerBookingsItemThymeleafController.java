@@ -33,7 +33,7 @@ import org.springframework.web.util.UriComponents;
 
 import com.mc.invoice.domain.CustomerBooking;
 import com.mc.invoice.service.api.CustomerBookingService;
-import com.mc.pdfgenerate.GeneratePdf;
+import com.mc.invoice.web.reports.GeneratePdf;
 
 import io.springlets.web.NotFoundException;
 import io.springlets.web.mvc.util.ControllerMethodLinkBuilderFactory;

@@ -1,15 +1,13 @@
 package com.mc.invoice.web;
-import com.mc.invoice.domain.Accomidation;
-import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
-import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
-import org.springframework.roo.addon.web.mvc.controller.annotations.responses.json.RooJSON;
-import com.mc.invoice.service.api.AccomidationService;
-import io.springlets.web.NotFoundException;
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
+import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
+import org.springframework.roo.addon.web.mvc.controller.annotations.responses.json.RooJSON;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.util.UriComponents;
 
+import com.mc.invoice.domain.Accomidation;
+import com.mc.invoice.service.api.AccomidationService;
+
+import io.springlets.web.NotFoundException;
+
 /**
  * = AccomidationsItemJsonController
  *
@@ -31,7 +34,7 @@ import org.springframework.web.util.UriComponents;
 @RooController(entity = Accomidation.class, type = ControllerType.ITEM)
 @RooJSON
 @RestController
-@RequestMapping(value = "/accomidations/{accomidation}", name = "AccomidationsItemJsonController", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/accomidations/{accomidation}", name = "AccomidationsItemJsonController", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AccomidationsItemJsonController {
 
     /**

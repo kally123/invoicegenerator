@@ -1,18 +1,17 @@
 package com.mc.invoice.web;
-import com.mc.invoice.domain.CustomerBooking;
-import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
-import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
-import org.springframework.roo.addon.web.mvc.controller.annotations.responses.json.RooJSON;
-import com.mc.invoice.service.api.CustomerBookingService;
-import io.springlets.data.domain.GlobalSearch;
 import java.util.Collection;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
+import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
+import org.springframework.roo.addon.web.mvc.controller.annotations.responses.json.RooJSON;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.util.UriComponents;
 
+import com.mc.invoice.domain.CustomerBooking;
+import com.mc.invoice.service.api.CustomerBookingService;
+
+import io.springlets.data.domain.GlobalSearch;
+
 /**
  * = CustomerBookingsCollectionJsonController
  *
@@ -34,7 +38,7 @@ import org.springframework.web.util.UriComponents;
 @RooController(entity = CustomerBooking.class, type = ControllerType.COLLECTION)
 @RooJSON
 @RestController
-@RequestMapping(value = "/customerbookings", name = "CustomerBookingsCollectionJsonController", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/customerbookings", name = "CustomerBookingsCollectionJsonController", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CustomerBookingsCollectionJsonController {
 
     /**

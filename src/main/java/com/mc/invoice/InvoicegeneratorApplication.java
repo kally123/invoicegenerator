@@ -14,14 +14,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class InvoicegeneratorApplication {
 
-    /**
-     * TODO Auto-generated method documentation
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        SpringApplication.run(InvoicegeneratorApplication.class, args);
+	/**
+	 * TODO Auto-generated method documentation
+	 *
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(InvoicegeneratorApplication.class, args);
 		openAppUrl("8080");
+		openAppUrl("8080/swagger-ui.html#/");
 	}
 
 	public static void openAppUrl(String port) {
