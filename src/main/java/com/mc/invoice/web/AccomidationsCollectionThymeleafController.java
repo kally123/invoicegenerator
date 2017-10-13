@@ -232,7 +232,7 @@ public class AccomidationsCollectionThymeleafController {
     public ResponseEntity<Select2DataSupport<Accomidation>> select2(GlobalSearch search, Pageable pageable, Locale locale) {
         Page<Accomidation> accomidations = getAccomidationService().findAll(search, pageable);
         String idExpression = "#{id}";
-        Select2DataSupport<Accomidation> select2Data = new Select2DataWithConversion<Accomidation>(accomidations, idExpression, getConversionService());
+        Select2DataSupport<Accomidation> select2Data = new Select2DataWithConversion<Accomidation>(accomidations, idExpression, getConversionService(), true);
         return ResponseEntity.ok(select2Data);
     }
 
