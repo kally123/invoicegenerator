@@ -1,5 +1,8 @@
 package com.mc.invoice.web;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Locale;
 
 import javax.validation.Valid;
@@ -9,7 +12,10 @@ import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
@@ -26,6 +32,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -160,7 +167,7 @@ public class CustomerBookingsItemThymeleafController {
 
 		GeneratePdf.getInstance().generatePdf(customerBooking, "TanishInvoice.pdf",
 				customerBooking.getCustomer().getCustomerName() + "_Invoice_" + LocalDate.now() + ".pdf");
-        return customerBooking;
+		return customerBooking;
     }
 
     /**
@@ -175,6 +182,17 @@ public class CustomerBookingsItemThymeleafController {
         model.addAttribute("customerBooking", customerBooking);
         return new ModelAndView("customerbookings/show");
     }
+    
+    @RequestMapping(value = "/downloadPdf", name = "downloadPdf")
+    public ResponseEntity<InputStreamResource> downloadPdf(@ModelAttribute CustomerBooking customerBooking)throws IOException {
+    	GeneratePdf.getInstance().generatePdf(customerBooking, "TanishInvoice.pdf",
+				customerBooking.getCustomer().getCustomerName() + "_Invoice_" + LocalDate.now() + ".pdf");
+		File file= new File(customerBooking.getCustomer().getCustomerName() + "_Invoice_" + LocalDate.now() + ".pdf");
+		InputStreamResource isr= new InputStreamResource(new FileInputStream(file));
+		HttpHeaders respHeades= new HttpHeaders();
+		return new ResponseEntity<InputStreamResource>(isr,respHeades, HttpStatus.OK);
+        
+      }
 
     /**
      * TODO Auto-generated method documentation
