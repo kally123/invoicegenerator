@@ -64,9 +64,9 @@ public class CustomerBookingServiceImpl implements CustomerBookingService {
     @Transactional
     public void delete(CustomerBooking customerBooking) {
         // Clear bidirectional one-to-one parent relationship with Accomidation
-        customerBooking.removeFromAccomidation();
+//        customerBooking.removeFromAccomidation();
         // Clear bidirectional one-to-one parent relationship with Customer
-        customerBooking.removeFromCustomer();
+//        customerBooking.removeFromCustomer();
         getCustomerBookingRepository().delete(customerBooking);
     }
 
@@ -101,8 +101,8 @@ public class CustomerBookingServiceImpl implements CustomerBookingService {
     @Transactional
     public CustomerBooking save(CustomerBooking entity) {
         // Ensure the relationships are maintained
-        entity.addToAccomidation(entity.getAccomidation());
-        entity.addToCustomer(entity.getCustomer());
+//        entity.addToAccomidation(entity.getAccomidation());
+//        entity.addToCustomer(entity.getCustomer());
         return getCustomerBookingRepository().save(entity);
     }
 

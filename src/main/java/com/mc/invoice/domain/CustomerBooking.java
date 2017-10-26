@@ -6,6 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 import javax.validation.constraints.Min;
@@ -17,6 +19,7 @@ import org.springframework.roo.addon.javabean.annotations.RooToString;
 import org.springframework.roo.addon.jpa.annotations.entity.JpaRelationType;
 import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
 import org.springframework.roo.addon.jpa.annotations.entity.RooJpaRelation;
+
 
 import io.springlets.format.EntityFormat;
 
@@ -53,19 +56,19 @@ public class CustomerBooking {
      * TODO Auto-generated attribute documentation
      *
      */
-    @OneToOne(cascade = { javax.persistence.CascadeType.MERGE, javax.persistence.CascadeType.PERSIST }, fetch = FetchType.LAZY, mappedBy = "customerBooking")
-    @RooJpaRelation(type = JpaRelationType.AGGREGATION)
-    @EntityFormat
-    private Customer customer;
-
-    /**
-     * TODO Auto-generated attribute documentation
-     *
-     */
-    @OneToOne(cascade = { javax.persistence.CascadeType.MERGE, javax.persistence.CascadeType.PERSIST }, fetch = FetchType.LAZY, mappedBy = "customerBooking")
-    @RooJpaRelation(type = JpaRelationType.AGGREGATION)
-    @EntityFormat
-    private Accomidation accomidation;
+//    @OneToOne(cascade = { javax.persistence.CascadeType.MERGE, javax.persistence.CascadeType.PERSIST }, fetch = FetchType.LAZY, mappedBy = "customerBooking")
+//    @RooJpaRelation(type = JpaRelationType.AGGREGATION)
+//    @EntityFormat
+//    private Customer customer;
+//
+//    /**
+//     * TODO Auto-generated attribute documentation
+//     *
+//     */
+//    @OneToOne(cascade = { javax.persistence.CascadeType.MERGE, javax.persistence.CascadeType.PERSIST }, fetch = FetchType.LAZY, mappedBy = "customerBooking")
+//    @RooJpaRelation(type = JpaRelationType.AGGREGATION)
+//    @EntityFormat
+//    private Accomidation accomidation;
 
     /**
      * TODO Auto-generated attribute documentation
@@ -154,6 +157,16 @@ public class CustomerBooking {
      */
     @NumberFormat
     private Float finalAmountAfterTax;
+    
+  //bi-directional many-to-one association to User
+  	@ManyToOne
+  	@JoinColumn(name="customer_id")
+  	private Customer customer;
+  	
+  //bi-directional many-to-one association to User
+  	@ManyToOne
+  	@JoinColumn(name="accomidation_id")
+  	private Accomidation accomidation;
 
     /**
      * TODO Auto-generated attribute documentation
@@ -513,53 +526,53 @@ public class CustomerBooking {
 				+ noOfRooms + "}";
     }
 
-    /**
-     * TODO Auto-generated method documentation
-     *
-     * @param customer
-     */
-    public void addToCustomer(Customer customer) {
-        if (customer == null) {
-            removeFromCustomer();
-        } else {
-            this.customer = customer;
-            customer.setCustomerBooking(this);
-        }
-    }
-
-    /**
-     * TODO Auto-generated method documentation
-     *
-     */
-    public void removeFromCustomer() {
-        if (this.customer != null) {
-            customer.setCustomerBooking(null);
-        }
-        this.customer = null;
-    }
+//    /**
+//     * TODO Auto-generated method documentation
+//     *
+//     * @param customer
+//     */
+//    public void addToCustomer(Customer customer) {
+//        if (customer == null) {
+//            removeFromCustomer();
+//        } else {
+//            this.customer = customer;
+//            customer.setCustomerBooking(this);
+//        }
+//    }
+//
+//    /**
+//     * TODO Auto-generated method documentation
+//     *
+//     */
+//    public void removeFromCustomer() {
+//        if (this.customer != null) {
+//            customer.setCustomerBooking(null);
+//        }
+//        this.customer = null;
+//    }
 
     /**
      * TODO Auto-generated method documentation
      *
      * @param accomidation
      */
-    public void addToAccomidation(Accomidation accomidation) {
-        if (accomidation == null) {
-            removeFromAccomidation();
-        } else {
-            this.accomidation = accomidation;
-            accomidation.setCustomerBooking(this);
-        }
-    }
-
-    /**
-     * TODO Auto-generated method documentation
-     *
-     */
-    public void removeFromAccomidation() {
-        if (this.accomidation != null) {
-            accomidation.setCustomerBooking(null);
-        }
-        this.accomidation = null;
-    }
+//    public void addToAccomidation(Accomidation accomidation) {
+//        if (accomidation == null) {
+//            removeFromAccomidation();
+//        } else {
+//            this.accomidation = accomidation;
+//            accomidation.setCustomerBooking(this);
+//        }
+//    }
+//
+//    /**
+//     * TODO Auto-generated method documentation
+//     *
+//     */
+//    public void removeFromAccomidation() {
+//        if (this.accomidation != null) {
+//            accomidation.setCustomerBooking(null);
+//        }
+//        this.accomidation = null;
+//    }
 }

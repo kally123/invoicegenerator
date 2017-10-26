@@ -1,4 +1,5 @@
 package com.mc.invoice.domain;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -6,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
@@ -13,6 +15,8 @@ import org.springframework.roo.addon.javabean.annotations.RooEquals;
 import org.springframework.roo.addon.javabean.annotations.RooJavaBean;
 import org.springframework.roo.addon.javabean.annotations.RooToString;
 import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.springlets.format.EntityFormat;
 
@@ -103,9 +107,13 @@ public class Customer {
      * TODO Auto-generated attribute documentation
      *
      */
-    @OneToOne(fetch = FetchType.LAZY)
-    @EntityFormat
-    private CustomerBooking customerBooking;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @EntityFormat
+//    private CustomerBooking customerBooking;
+    
+  //bi-directional many-to-one association to CustomerBooking
+  	@OneToMany(mappedBy="customer")
+  	private List<CustomerBooking> customerBooking;
 
     /**
      * TODO Auto-generated attribute documentation
@@ -352,7 +360,8 @@ public class Customer {
      *
      * @return CustomerBooking
      */
-    public CustomerBooking getCustomerBooking() {
+    @JsonIgnore
+    public List<CustomerBooking> getCustomerBooking() {
         return this.customerBooking;
     }
 
@@ -361,7 +370,7 @@ public class Customer {
      *
      * @param customerBooking
      */
-    public void setCustomerBooking(CustomerBooking customerBooking) {
+    public void setCustomerBooking(List<CustomerBooking> customerBooking) {
         this.customerBooking = customerBooking;
     }
 
