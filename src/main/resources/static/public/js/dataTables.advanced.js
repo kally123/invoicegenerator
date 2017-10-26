@@ -896,6 +896,11 @@
         var url = getDataValue(datatables, 'edit-url');
         return processUrl(datatables, url, id);
     }
+    
+    function getDownloadPdfUrl(datatables, id) {
+        var url = getDataValue(datatables, 'download-pdf-url');
+        return processUrl(datatables, url, id);
+    }
 
     /**
      * Returns the URL to remove an element of the Datatables.
@@ -1236,6 +1241,12 @@
             buttons = buttons.concat('<a class="btn btn-action btn-sm" href="')
                 .concat(editUrl).concat('"><span class="glyphicon glyphicon-pencil"></span></a>');
         }
+        
+        var downloadUrl = getDownloadPdfUrl(datatables, rowId);
+        if (downloadUrl) {
+            buttons = buttons.concat('<a download="').concat(rowId).concat('.pdf" class="btn btn-action btn-sm" href="')
+                .concat(downloadUrl).concat('"><span class="glyphicon glyphicon-download-alt"></span></a>');
+        }
 
         var deleteUrl = getDeleteUrl(datatables, rowId);
         if (deleteUrl) {
@@ -1296,6 +1307,7 @@
     apiRegister('advanced.getCreateUrl()', getCreateUrl);
     apiRegister('advanced.getEditUrl()', getEditUrl)
     apiRegister('advanced.getDeleteUrl()', getDeleteUrl);
+    apiRegister('advanced.downloadPdfrl()', getDownloadPdfUrl);
     apiRegister('advanced.getDeleteBatchUrl()', getDeleteBatchUrl);
     apiRegister('advanced.getShowUrl()', getShowUrl);
     apiRegister('advanced.getDataValue()', getDataValue);

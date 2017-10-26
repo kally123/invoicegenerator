@@ -2,6 +2,8 @@ package com.mc.invoice.web;
 import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooLinkFactory;
 import io.springlets.web.mvc.util.MethodLinkFactory;
 import io.springlets.web.mvc.util.SpringletsMvcUriComponentsBuilder;
+
+import java.io.IOException;
 import java.util.Map;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponents;
@@ -27,6 +29,8 @@ public class CustomerBookingsItemThymeleafLinkFactory implements MethodLinkFacto
      *
      */
     public static final String EDITFORM = "editForm";
+    
+    public static final String DOWNLOAD_PDF = "downloadPdf";
 
     /**
      * TODO Auto-generated attribute documentation
@@ -78,6 +82,15 @@ public class CustomerBookingsItemThymeleafLinkFactory implements MethodLinkFacto
         }
         if (methodName.equals(DELETE)) {
             return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).delete(null)).buildAndExpand(pathVariables);
+        }
+        
+        if (methodName.equals(DOWNLOAD_PDF)) {
+            try {
+				return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).downloadPdf(null)).buildAndExpand(pathVariables);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
         throw new IllegalArgumentException("Invalid method name: " + methodName);
     }
